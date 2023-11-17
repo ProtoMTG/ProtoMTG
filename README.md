@@ -1,4 +1,5 @@
-### Hi there 👋
+### ProtoMTG
+
 This is the repository of our work "ProtoMTG: Prototypical Multi-Task Learning for Generating Immunohistochemical Images from DAPI Staining of Nuclei"
 
 <!--
