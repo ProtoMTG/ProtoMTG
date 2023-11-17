@@ -1,4 +1,5 @@
 ### Hi there 👋
+This is the repository of our work "ProtoMTG: Prototypical Multi-Task Learning for Generating Immunohistochemical Images from DAPI Staining of Nuclei"
 
 <!--
 **ProtoMTG/ProtoMTG** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
