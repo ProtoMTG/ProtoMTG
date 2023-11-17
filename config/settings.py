@@ -55,8 +55,8 @@ eval_per_epoch = 10
 
 joint_lr_step_size = 100
 
-num_stage1_epochs = 15
-num_train_epochs = 1001
+num_stage1_epochs = 50
+num_train_epochs = 1000
 
 push_start = 10 
 push_epochs = [i for i in range(num_train_epochs) if i % 10 == 0 and i != 0]
