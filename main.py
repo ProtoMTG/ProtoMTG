@@ -57,11 +57,11 @@ train_dataset = BasicDataset(path_root=data_path, task_kwargs=task_kwargs, data_
 val_dataset = BasicDataset(path_root=data_path, task_kwargs=task_kwargs, data_strengthen=False)
 test_dataset = BasicDataset(path_root=data_path, task_kwargs=task_kwargs, data_strengthen=False)
 
-train_loader = torch.utils.data.DataLoader(train_dir, batch_size=train_batch_size, shuffle=True,
+train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=train_batch_size, shuffle=True,
                             num_workers=4, pin_memory=False)
-val_loader = torch.utils.data.DataLoader(val_dir, batch_size=train_push_batch_size, shuffle=False,
+val_loader = torch.utils.data.DataLoader(val_dataset, batch_size=train_push_batch_size, shuffle=False,
                             num_workers=4, pin_memory=False)
-test_loader = torch.utils.data.DataLoader(test_dir, batch_size=test_batch_size, shuffle=False,
+test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=test_batch_size, shuffle=False,
                             num_workers=4, pin_memory=False)
 # we should look into distributed sampler more carefully at torch.utils.data.distributed.DistributedSampler(train_dataset)
 print('training set size: {0}'.format(len(train_loader.dataset)))
