@@ -67,14 +67,14 @@ class ChannelSELayer(nn.Module):
         return fc_out_2, output_tensor
 
 
-class PPNet(nn.Module):
+class PMTG(nn.Module):
 
     def __init__(self, task_kwargs, prototype_kwargs, features, decoder, warm_decoder, img_size, prototype_shape,
                  proto_layer_rf_info, num_classes, init_weights=True,
                  prototype_activation_function='log',
                  add_on_layers_type='bottleneck', proto_combine_mode='sum', weighted=True):
 
-        super(PPNet, self).__init__()
+        super(PMTG, self).__init__()
         self.tasks = task_kwargs['task_names']
         self.prototype_per_task = prototype_kwargs['num_per_task']
         self.shared_prototype = prototype_kwargs['num_shared']
@@ -361,7 +361,7 @@ class PPNet(nn.Module):
                 nn.init.constant_(m.bias, 0)
 
 
-class construct_PPNet(PPNet):
+class construct_PMTG(PMTG):
     def __init__(self,
         base_architecture, 
         task_kwargs,
