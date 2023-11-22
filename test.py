@@ -14,7 +14,6 @@ import re
 from helpers import makedir
 import push
 import prune
-import train_and_test as tnt
 import save
 from preprocess import mean, std, preprocess_input_function
 
@@ -47,9 +46,9 @@ test_dataset = BasicDataset(path_root=test_dir,task_kwargs=task_kwargs,data_stre
 test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=test_batch_size, shuffle=False, num_workers=0, pin_memory=False)
 
 # construct the model
-import models.proto.model_gap_stages as model
+import models.proto.model as model
 
-ppnet = model.construct_PPNet(base_architecture=base_architecture,
+ppnet = model.construct_PMTG(base_architecture=base_architecture,
                             task_kwargs=task_kwargs,
                             prototype_kwargs=prototype_kwargs,
                             pretrained=True, img_size=img_size,
@@ -64,7 +63,7 @@ ppnet_multi = torch.nn.DataParallel(ppnet)
 
 # Get criterion
 print('Get loss')
-from multitask_utils import get_criterion, get_output
+from utils.multitask_utils import get_criterion, get_output
 criterion = get_criterion(task_kwargs)
 criterion.cuda()
 print(criterion)
@@ -84,7 +83,7 @@ else:
 
 # weighting of different training losses
 # number of training epochs, number of warm epochs, push start epoch, push epochs
-from multitask_utils import get_loss_meters, ProgressMeter
+from utils.multitask_utils import get_loss_meters, ProgressMeter
 
 def evaluation(net, val_loader):
     from evaluation.evaluate_utils import PerformanceMeter
@@ -107,6 +106,6 @@ def evaluation(net, val_loader):
 best_result = -1
 
 with torch.no_grad():
-    eval_res = evaluation(net=ppnet_multi, val_loader=val_loader)
+    eval_res = evaluation(net=ppnet_multi, val_loader=test_loader)
 
 
