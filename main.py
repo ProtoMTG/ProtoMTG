@@ -87,9 +87,9 @@ ppnet = ppnet.cuda()
 ppnet_multi = torch.nn.DataParallel(ppnet)
 
 # # define optimizer
-joint_optimizer = torch.optim.SGD(ppnet_multi.parameters(), lr=1e-2, momentum=0.9, weight_decay=1e-4)
+joint_optimizer = torch.optim.SGD(ppnet_multi.parameters(), lr=2e-2, momentum=0.9, weight_decay=1e-4)
 joint_lr_scheduler = torch.optim.lr_scheduler.StepLR(joint_optimizer, step_size=500, gamma=0.1)
-warm_optimizer = torch.optim.SGD(ppnet_multi.parameters(), lr=1e-2, momentum=0.9, weight_decay=1e-4)
+warm_optimizer = torch.optim.SGD(ppnet_multi.parameters(), lr=5e-3, momentum=0.9, weight_decay=1e-4)
 
 import logging
 logger = logging.getLogger()

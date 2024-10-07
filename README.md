@@ -40,3 +40,19 @@ python ./test.py
 ```
 
 * `setting.py` is the config file consisting of relevant parameters. You can modify it by yourself.
+
+To assist researchers unfamiliar with multi-task learning in understanding the parameters better, we provide the following explanations:
+
+- task_kwargs: This dictionary from the configuration file records the parameters for multi-task learning.
+    - task_names: Corresponding names of the tasks.
+    - task_type: Corresponding types of the tasks.
+    - loss_weights: Loss weights assigned to each task.
+
+- prototype_kwargs: The dictionary for configuring prototype-related parameters.
+    - num_per_task: The number of task-specific prototypes.
+    - num_shared: The number of shared prototypes.
+    - shape: The size of the prototypes.
+
+- coefs: The dictionary for configuring relevant hyperparameters in the paper.
+    - act: the weight of activation loss
+    - div: the weight of diversity loss
